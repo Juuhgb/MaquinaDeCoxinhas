@@ -33,14 +33,17 @@ public class PrincipalController {
     
     @FXML
     private void retirar(){
-        if(maquina.getEstoque() == 0){
+        int aux = Integer.parseInt(campoRetirar.getText());
+        if(maquina.getEstoque() <aux){
             Alert alert = new Alert(AlertType.ERROR);
             alert.setHeaderText(null);
             alert.setContentText("Não há coxinhas para retirar");
             alert.show();
             return; 
         }
-        maquina.venderCoxinha();
+        
+        maquina.venderCoxinha(aux);
+        
         campoEstoque.setText(String.valueOf(maquina.getEstoque()));
     }
     
