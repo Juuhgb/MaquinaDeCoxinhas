@@ -10,7 +10,9 @@ public class PrincipalController {
     
     @FXML
     private TextField campoEstoque;
+    @FXML
     private TextField campoAbastecer;
+    @FXML
     private TextField campoRetirar;
     
     private MaquinaCoxinhas maquina; 
@@ -25,7 +27,7 @@ public class PrincipalController {
     private void abastecer(){
         int aux = Integer.parseInt(campoAbastecer.getText());
         maquina.abastecer(aux);
-        campoAbastecer.setText(String.valueOf(maquina.getEstoque()));
+        campoEstoque.setText(String.valueOf(maquina.getEstoque()));
     }
     
     
@@ -43,12 +45,12 @@ public class PrincipalController {
     }
     
     @FXML
-    private void retirarUma(){   
-        int aux = Integer.parseInt(campoRetirar.getText()); 
-        if(aux > 0){
-            aux -= 1;
-            campoRetirar.setText(String.valueOf(aux));
+    private void retirarUma(){ 
+        if(maquina.getEstoque() > 0){
+            maquina.venderCoxinha();
         }
+        
+        campoEstoque.setText(String.valueOf(maquina.getEstoque()));
     }
     
     
